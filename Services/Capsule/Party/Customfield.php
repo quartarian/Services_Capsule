@@ -154,10 +154,10 @@ class Services_Capsule_Party_Customfield extends Services_Capsule_Common
      * @return mixed bool|stdClass         A stdClass object containing the information from
      *                                     the json-decoded response from the server.
      */
-    public function update($partyId, $fieldId, $fields)
+    public function update($partyId, $fields)
     {
-        $url         = '/' . (double)$partyId . '/customfield/ ' . (double)$fieldId;
-        $customField = array('customField' => $fields);
+        $url         = '/' . (double)$partyId . '/customfields';
+        $customField = array('customFields' => array('customField' => $fields));
 
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_PUT, json_encode($customField)
